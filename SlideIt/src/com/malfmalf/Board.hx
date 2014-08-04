@@ -27,28 +27,27 @@ class Board extends Component {
 	private function addTile(c:BoardCoord, t:String) {
 		var e = new Entity();
 		var tile:BoardTile = null;
-		tile = new EmptyTile(c, getLocalTilePosition(c));
-		//if (t == "_") {
-			//tile = new EmptyTile(c, getLocalTilePosition(c));
-		//}
-		//else if (t == "X") {
-			//tile = new StopTile(c, getLocalTilePosition(c));
-		//}
-		//else if (t == "L") {
-			//tile = new DirectionTile(MoveDirection.LEFT,c, getLocalTilePosition(c));
-		//}
-		//else if (t == "R") {
-			//tile = new DirectionTile(MoveDirection.RIGHT,c, getLocalTilePosition(c));
-		//}
-		//else if (t == "U") {
-			//tile = new DirectionTile(MoveDirection.UP,c, getLocalTilePosition(c));
-		//}
-		//else if (t == "D") {
-			//tile = new DirectionTile(MoveDirection.DOWN,c, getLocalTilePosition(c));
-		//}
-		//else  {
-			//tile = new ColorTile(Std.parseInt(t),c, getLocalTilePosition(c));
-		//}
+		if (t == "_") {
+			tile = new EmptyTile(c, getLocalTilePosition(c));
+		}
+		else if (t == "X") {
+			tile = new StopTile(c, getLocalTilePosition(c));
+		}
+		else if (t == "L") {
+			tile = new DirectionTile(MoveDirection.LEFT,c, getLocalTilePosition(c));
+		}
+		else if (t == "R") {
+			tile = new DirectionTile(MoveDirection.RIGHT,c, getLocalTilePosition(c));
+		}
+		else if (t == "U") {
+			tile = new DirectionTile(MoveDirection.UP,c, getLocalTilePosition(c));
+		}
+		else if (t == "D") {
+			tile = new DirectionTile(MoveDirection.DOWN,c, getLocalTilePosition(c));
+		}
+		else  {
+			tile = new ColorTile(Std.parseInt(t),c, getLocalTilePosition(c));
+		}
 		e.add(tile);
 		tileRoot.addChild(e);
 		tiles.push(tile);

@@ -7,6 +7,7 @@ import flambe.display.Sprite;
 import flambe.Entity;
 import flambe.math.Rectangle;
 import flambe.scene.Director;
+import flambe.scene.FadeTransition;
 import flambe.System;
 import flambe.asset.AssetPack;
 import flambe.asset.Manifest;
@@ -82,7 +83,8 @@ class Main
 	}
 	public static function goGameScene() : Entity {
 		var ent = GameScene.createScene();
-		var transition = new SlideTransition(1, Ease.quintInOut).right(); 
+		//var transition = new SlideTransition(1, Ease.quintInOut).right(); 
+		var transition = new FadeTransition(1, Ease.quintInOut); 
 		director.pushScene(ent, transition); 	
 		return ent;		
 	}
