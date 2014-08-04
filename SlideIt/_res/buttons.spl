@@ -1,0 +1,17 @@
+load,D:/src/flambe/SlideIt/_res/buttons.png
+vcut_alpha,buttons,0,10
+hcut_alpha,buttons_1,0,10
+hcut_alpha,buttons_2,0,10
+crop_alpha,buttons_1_1,0
+crop_alpha,buttons_1_2,0
+crop_alpha,buttons_1_3,0
+crop_alpha,buttons_1_4,0
+crop_alpha,buttons_1_5,0
+crop_alpha,buttons_1_6,0
+crop_alpha,buttons_2_1,0
+crop_alpha,buttons_2_2,0
+crop_alpha,buttons_2_3,0
+crop_alpha,buttons_2_4,0
+crop_alpha,buttons_2_5,0
+crop_alpha,buttons_2_6,0
+crop_alpha,buttons_2_7,0

@@ -1,12 +1,13 @@
-package com.malfmalf;
+package com.malfmalf.tiles ;
 import flambe.math.Point;
 import flambe.display.ImageSprite;
-import com.malfmalf.Block.MoveDirection;
+import com.malfmalf.blocks.Block;
+import com.malfmalf.blocks.Block.MoveDirection;
 /**
  * ...
  * @author ...
  */
-class StopTile extends BoardTile{
+class StopTile extends Tile{
 
 	public function new(c:BoardCoord, p:Point) {
 		super(c, p);

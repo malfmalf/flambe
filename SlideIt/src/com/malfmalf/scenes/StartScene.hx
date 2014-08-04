@@ -1,7 +1,9 @@
 package com.malfmalf.scenes;
 import com.malfmalf.Button;
+import com.malfmalf.TextButton;
 import flambe.display.FillSprite;
 import flambe.display.Sprite;
+import flambe.display.Font;
 import flambe.Entity;
 import flambe.System;
 import flambe.scene.Scene;
@@ -20,7 +22,7 @@ class StartScene{
 		sceneRoot.add(new Scene());
 		sceneRoot.addChild(new Entity().add(new FillSprite(0x808080,Constants.gameWidth, Constants.gameHeight ).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5)));
 		var start_entity = new Entity();
-		startButton = new Button(Main.boardPack.getTexture("img/tiles/r"), Main.boardPack.getTexture("img/tiles/l"), Main.boardPack.getTexture("img/tiles/u"));
+		startButton = new TextButton(Main.buttons[9],new Font(Main.boardPack, "fonts/timotheos"),"Start");
 		start_entity.add(startButton);
 		start_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5);
 		sceneRoot.addChild(start_entity);
@@ -30,6 +32,6 @@ class StartScene{
 	}
 	
 	public static function onStartButton() {
-			Main.goGameScene();
+			Main.goLevelsScene();
 	}
 }

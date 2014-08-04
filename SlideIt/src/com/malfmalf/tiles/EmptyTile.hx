@@ -1,4 +1,4 @@
-package com.malfmalf;
+package com.malfmalf.tiles ;
 import flambe.math.Point;
 import flambe.display.Font;
 import flambe.display.TextSprite;
@@ -11,7 +11,7 @@ import flambe.Entity;
  * ...
  * @author ...
  */
-class EmptyTile extends BoardTile {
+class EmptyTile extends Tile {
 	private static var font:Font;
 	public function new(c:BoardCoord,p:Point) {
 		super(c, p);

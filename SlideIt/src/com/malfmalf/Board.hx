@@ -5,7 +5,11 @@ import flambe.Component;
 import flambe.Entity;
 import flambe.display.Sprite;
 import flambe.math.Point;
-import com.malfmalf.Block.MoveDirection;
+import com.malfmalf.tiles.Tile;
+import com.malfmalf.tiles.*;
+import com.malfmalf.blocks.Block;
+import com.malfmalf.blocks.ColorBlock;
+import com.malfmalf.blocks.Block.MoveDirection;
 
 /**
  * ...
@@ -15,18 +19,18 @@ class Board extends Component {
 	public var width(default, null):Int;
 	public var height(default, null):Int;
 	public var definition(default, null):String;
-	public var tiles(default, null):Array<BoardTile>;
+	public var tiles(default, null):Array<Tile>;
 	public var blocks(default, null):Array<Block>;
 	public var tileRoot(default, null):Entity;
 	public var blockRoot(default, null):Entity;
 	public function new(def:String) {
 		definition = def;
-		tiles = new Array<BoardTile>();
+		tiles = new Array<Tile>();
 		blocks = new Array<Block>();
 	}
 	private function addTile(c:BoardCoord, t:String) {
 		var e = new Entity();
-		var tile:BoardTile = null;
+		var tile:Tile = null;
 		if (t == "_") {
 			tile = new EmptyTile(c, getLocalTilePosition(c));
 		}
@@ -118,7 +122,7 @@ class Board extends Component {
 		if (!c.isValid()) return false;
 		return c.i < width && c.j < height;
 	}
-	public function getTile(c:BoardCoord):BoardTile {
+	public function getTile(c:BoardCoord):Tile {
 		if (!isValid(c)) return null;
 		return tiles[c.j * width + c.i];
 	}

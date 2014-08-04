@@ -1,8 +1,8 @@
-package com.malfmalf;
+package com.malfmalf.blocks ;
 
 import flambe.display.ImageSprite;
 import flambe.math.Point;
-import com.malfmalf.Block.MoveDirection;
+import com.malfmalf.blocks.Block.MoveDirection;
 import com.malfmalf.scenes.GameScene;
 /**
  * ...

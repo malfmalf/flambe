@@ -1,4 +1,4 @@
-package com.malfmalf;
+package com.malfmalf.blocks ;
 import flambe.animation.Ease;
 import flambe.Component;
 import flambe.display.Sprite;

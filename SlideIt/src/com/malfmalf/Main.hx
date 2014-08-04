@@ -1,9 +1,12 @@
 package com.malfmalf;
 
+import com.malfmalf.scenes.LevelsScene;
+import com.malfmalf.scenes.PauseScene;
 import com.malfmalf.scenes.StartScene;
 import com.malfmalf.scenes.GameScene;
 import flambe.animation.Ease;
 import flambe.display.Sprite;
+import flambe.display.SubTexture;
 import flambe.Entity;
 import flambe.math.Rectangle;
 import flambe.scene.Director;
@@ -22,6 +25,7 @@ class Main
 	public static var directorEntity:Entity;
 	public static var boardPack:AssetPack;
 	public static var director:Director;
+	public static var buttons:Array<SubTexture>;
 	
     private static function main (){
         // Wind up all platform-specific stuff
@@ -33,6 +37,7 @@ class Main
 
     private static function onSuccess (pack :AssetPack) {
 		boardPack = pack;
+		buttons = boardPack.getTexture("img/buttons_sheet").split(7, 2);
         // Add a solid color background
         var background = new FillSprite(0x80ff80, System.stage.width, System.stage.height);
         System.root.addChild(new Entity().add(background));
@@ -78,11 +83,25 @@ class Main
 	public static function goStartScene() : Entity {
 		var ent = StartScene.createScene();
 		var transition = new SlideTransition(1, Ease.quintInOut).left(); 
-		director.pushScene(ent, transition); 	
+		director.unwindToScene(ent, transition); 	
 		return ent;
 	}
-	public static function goGameScene() : Entity {
-		var ent = GameScene.createScene();
+	public static function goGameScene(level:Int) : Entity {
+		var ent = GameScene.createScene(level);
+		//var transition = new SlideTransition(1, Ease.quintInOut).right(); 
+		var transition = new FadeTransition(1, Ease.quintInOut); 
+		director.unwindToScene(ent, transition); 	
+		return ent;		
+	}
+	public static function goLevelsScene() : Entity {
+		var ent = LevelsScene.createScene();
+		//var transition = new SlideTransition(1, Ease.quintInOut).right(); 
+		var transition = new FadeTransition(1, Ease.quintInOut); 
+		director.unwindToScene(ent, transition); 	
+		return ent;		
+	}
+	public static function goPauseScene() : Entity {
+		var ent = PauseScene.createScene();
 		//var transition = new SlideTransition(1, Ease.quintInOut).right(); 
 		var transition = new FadeTransition(1, Ease.quintInOut); 
 		director.pushScene(ent, transition); 	

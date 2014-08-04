@@ -18,32 +18,34 @@ import flambe.math.Point;
 class GameScene{
 	public static var sceneRoot(default, null):Entity;
 	public static var board:Board;
+	public static var level:Int;
 
 	private static var mouseDownPos:Point;
 
-	public static function createScene():Entity {
+	public static function createScene(level:Int):Entity {
 //		if (sceneRoot != null) sceneRoot.dispose();
+		GameScene.level = level;
 		sceneRoot = new Entity();
 		sceneRoot.add(new Scene());
 		sceneRoot.addChild(new Entity().add(new FillSprite(0x808080,Constants.gameWidth, Constants.gameHeight ).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5)));
 		createBoard();
 		var but_ent = new Entity();
-		var but = new Button(Main.boardPack.getTexture("img/tiles/d"));
+		var but = new Button(Main.buttons[8]);
 		but_ent.add(but);
 		sceneRoot.addChild(but_ent);
 		but_ent.get(Sprite).setXY(Constants.gameWidth - 64, 0);
-		but.connectClicked(onBack);
+		but.connectClicked(onPause);
 		System.keyboard.down.connect(keyDown);
 		System.pointer.down.connect(mouseDown);
 		System.pointer.up.connect(mouseUp);
 		return sceneRoot;
 	}
-	private static function onBack() {
-		Main.goStartScene();
+	private static function onPause() {
+		Main.goPauseScene();
 	}
 	private static function createBoard() {
 		var boardRoot = new Entity();
-		board = new Board(Main.boardPack.getFile("levels/1.txt").toString());
+		board = new Board(Main.boardPack.getFile("levels/"+level+".txt").toString());
 		boardRoot.add(board);
 		sceneRoot.addChild(boardRoot);
 	}

@@ -1,5 +1,6 @@
-package com.malfmalf;
-import com.malfmalf.Block.MoveDirection;
+package com.malfmalf.tiles ;
+import com.malfmalf.blocks.Block.MoveDirection;
+import com.malfmalf.blocks.Block;
 import flambe.animation.Ease;
 import flambe.math.Point;
 import flambe.display.ImageSprite;
@@ -9,12 +10,14 @@ import flambe.script.Repeat;
 import flambe.script.Script;
 import flambe.script.Sequence;
 import flambe.script.Shake;
+import com.malfmalf.AnimationManager;
+import com.malfmalf.Animation;
 
 /**
  * ...
  * @author ...
  */
-class DirectionTile extends BoardTile
+class DirectionTile extends Tile
 {
 	public var direction(default, null):MoveDirection;
 	public function new(d:MoveDirection,c:BoardCoord, p:Point) {

@@ -1,14 +1,16 @@
-package com.malfmalf;
+package com.malfmalf.tiles ;
 
 import flambe.math.Point;
 import flambe.display.ImageSprite;
-import com.malfmalf.Block.MoveDirection;
-import format.png.Data.Color;
+import com.malfmalf.blocks.Block.MoveDirection;
+import com.malfmalf.blocks.ColorBlock;
+import com.malfmalf.blocks.Block;
+
 /**
  * ...
  * @author ...
  */
-class ColorTile extends BoardTile{
+class ColorTile extends Tile{
 	public var color(default, null):Int;
 	public function new(color:Int,c:BoardCoord, p:Point) {
 		super(c, p);
