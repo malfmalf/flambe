@@ -36,7 +36,7 @@ class PauseScene{
 		sceneRoot.addChild(levels_entity);
 		resume_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.3, Constants.gameHeight * 0.5);
 		restart_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5);
-		levels_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.8, Constants.gameHeight * 0.5);
+		levels_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.7, Constants.gameHeight * 0.5);
 		resume_button.connectClicked(onResumeButton);
 		restart_button.connectClicked(onRestartButton);
 		levels_button.connectClicked(onLevelsButton);

@@ -35,7 +35,6 @@ class DirectionTile extends Tile
 		}
 		var manager = new AnimationManager(new AnimationSheet(Main.boardPack.getTexture("img/tiles/" + name), 64, 64));
 		var animation = Animation.allFramesAnimation(manager.animationSheet, 8.0, true, true);
-		trace(animation.frames);
 		manager.addAnimation("main", animation);
 		manager.setCurrentAnimation("main");
 		var sprite = new AnimatedSprite(manager).centerAnchor();

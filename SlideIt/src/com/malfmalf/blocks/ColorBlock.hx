@@ -33,7 +33,6 @@ class ColorBlock extends Block
 			}
 			return;
 		}
-		if(move!=MoveDirection.NONE) trace(color);
 		super.onUpdate(dt);
 	}
 	public function dissapear() {

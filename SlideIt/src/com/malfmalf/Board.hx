@@ -1,5 +1,6 @@
 package com.malfmalf;
 
+import com.malfmalf.blocks.MovingBlock;
 import flambe.asset.AssetPack;
 import flambe.Component;
 import flambe.Entity;
@@ -58,6 +59,13 @@ class Board extends Component {
 	}
 	private function addBlock(c:BoardCoord, t:String) {
 		if (t == "0") {
+		}
+		else if (t == "M") {
+			var e = new Entity();
+			var block = new MovingBlock(c, getLocalTilePosition(c));
+			e.add(block);
+			blockRoot.addChild(e);
+			blocks.push(block);		
 		}
 		else  {
 			var e = new Entity();
