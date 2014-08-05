@@ -17,10 +17,11 @@ class Tile extends Component{
 		trace("Non specific BoardTile added....");
 	}
 	public function onEnterStart(block:Block) {
-		
 	}
 	public function onEnterEnd(block:Block) {
-		
 	}
 	
+	public function toString():String {
+		return get_name() + " @ " + coord;
+	}	
 }

@@ -17,7 +17,7 @@ class StopTile extends Tile{
 		owner.get(ImageSprite).setXY(pos.x, pos.y);
 	}
 	override public function onEnterStart(block:Block) {
-			block.move = MoveDirection.NONE;
+			block.stop();
 	}
 	
 }

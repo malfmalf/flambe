@@ -16,5 +16,6 @@ class MovingBlock extends Block{
 	override public function onAdded () {
 		owner.add(new ImageSprite(Main.boardPack.getTexture("img/blocks/moving")).centerAnchor());
 		owner.get(ImageSprite).setXY(pos.x, pos.y);
+		super.onAdded();
     }	
 }

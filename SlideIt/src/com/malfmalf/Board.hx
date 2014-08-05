@@ -108,34 +108,49 @@ class Board extends Component {
 		return new Point(owner.get(Sprite).x._ + local.x, owner.get(Sprite).y._ + local.y);
 	}
 	public function getLocalTilePosition(c:BoardCoord):Point {
-		return new Point((c.i - width * 0.5) * 64, (c.j - height * 0.5) * 64);
+		return new Point((c.i - (width - 1) * 0.5) * Constants.tileSize, (c.j - (height - 1) * 0.5 ) * Constants.tileSize);
+	}
+	public function getCoordFromPosition(p:Point, ?c:BoardCoord):BoardCoord {
+		if (c == null) c = new BoardCoord();
+		var res = new Point();
+		owner.get(Sprite).getViewMatrix().inverseTransform(p.x, p.y, res);
+		return getCoordFromLocalPosition(res);
+	}
+	public function getCoordFromLocalPosition(p:Point,?c:BoardCoord):BoardCoord {
+		return getCoordFromLocalPositionXY(p.x,p.y,c);
+	}
+	public function getCoordFromLocalPositionXY(x:Float,y:Float,?c:BoardCoord):BoardCoord {
+		if (c == null) c = new BoardCoord();
+		c.i = Math.round(x / Constants.tileSize + (width  - 1) * 0.5);
+		c.j = Math.round(y / Constants.tileSize + (height - 1) * 0.5);
+		return c;
 	}
 	public function left() {
 		if (anyBlockMoving()) return;
 		++GameScene.moves;
 		for (b in blocks) {
-			b.move = MoveDirection.LEFT;
+			b.left();
 		}
 	}
 	public function right() {
 		if (anyBlockMoving()) return;
 		++GameScene.moves;
 		for (b in blocks) {
-			b.move = MoveDirection.RIGHT;
+			b.right();
 		}
 	}
 	public function up() {
 		if (anyBlockMoving()) return;
 		++GameScene.moves;
 		for (b in blocks) {
-			b.move = MoveDirection.UP;
+			b.up();
 		}
 	}
 	public function down() {
 		if (anyBlockMoving()) return;
 		++GameScene.moves;
 		for (b in blocks) {
-			b.move = MoveDirection.DOWN;
+			b.down();
 		}
 	}	
 	public function isValid(c:BoardCoord):Bool {
@@ -146,14 +161,26 @@ class Board extends Component {
 		if (!isValid(c)) return null;
 		return tiles[c.j * width + c.i];
 	}
-	public function getBlock(c:BoardCoord):Block{
+	public function getBlock(c:BoardCoord,?exclude:Block):Block{
 		if (!isValid(c)) return null;
 		for (b in blocks) {
+			if (b == exclude) continue;
 			if (b.coord.eq(c)) {
 				return b;
 			}
 		}
 		return null;
+	}
+	public function getBlocks(c:BoardCoord, ?exclude:Block):Array<Block> {
+		var arr = new Array<Block>();
+		if (!isValid(c)) return arr;
+		for (b in blocks) {
+			if (b == exclude) continue;
+			if (b.coord.eq(c) || b.next_coord.eq(c)) {
+				arr.push(b);
+			}
+		}
+		return arr;
 	}
 	public function anyBlockMoving():Bool {
 		for (b in blocks) {

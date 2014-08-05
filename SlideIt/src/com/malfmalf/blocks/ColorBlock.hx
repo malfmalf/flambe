@@ -21,6 +21,7 @@ class ColorBlock extends Block
 	override public function onAdded () {
 		owner.add(new ImageSprite(Main.boardPack.getTexture("img/blocks/"+color)).centerAnchor());
 		owner.get(ImageSprite).setXY(pos.x, pos.y);
+		super.onAdded();
     }
 	override public function onUpdate(dt:Float) {
 		if (dissapearing) {

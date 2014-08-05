@@ -5,8 +5,8 @@ package com.malfmalf;
  * @author ...
  */
 class BoardCoord{
-	public var i(default, null):Int;
-	public var j(default, null):Int;
+	public var i:Int;
+	public var j:Int;
 	public function new(i = -1, j = -1) {
 		this.i = i;
 		this.j = j;		
@@ -32,5 +32,8 @@ class BoardCoord{
 	}
 	public function eq(c:BoardCoord):Bool {
 		return i == c.i && j == c.j;
+	}
+	public function toString():String {
+		return "BoardCoord(" + i + "," + j + ")";
 	}
 }
