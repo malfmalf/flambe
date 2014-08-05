@@ -45,6 +45,11 @@ class Block extends Component{
 				case UP:     new_coord = coord.up();
 				case DOWN:   new_coord = coord.down();
 			}
+			if (!GameScene.board.isValid(new_coord)) {
+				coord = new_coord;
+				onFall();
+				return;
+			}
 			var new_tile = GameScene.board.getTile(new_coord);
 			new_tile.onEnterStart(this);
 			var new_block = GameScene.board.getBlock(new_coord);
@@ -71,5 +76,12 @@ class Block extends Component{
 				spr.y.animateTo(p.y, Constants.moveDuration, Ease.linear);
 			}
 		}
+	}
+	public function onFall() {
+		move = NONE;
+		var spr = owner.get(Sprite);
+		spr.scaleX.animateTo(0.1, 0.5);
+		spr.scaleY.animateTo(0.1, 0.5);
+		spr.scaleX.behavior.
 	}
 }

@@ -1,6 +1,7 @@
 package com.malfmalf;
 
 import com.malfmalf.blocks.MovingBlock;
+import com.malfmalf.scenes.GameScene;
 import flambe.asset.AssetPack;
 import flambe.Component;
 import flambe.Entity;
@@ -95,6 +96,13 @@ class Board extends Component {
 			}
 		}
 	}
+	
+	override public function onUpdate(dt:Float) {
+		for (block in blocks) {
+			if (Std.is(block, ColorBlock)) return;
+		}
+		Main.goFinishScene(true);
+	}
 	public function getTilePosition(c:BoardCoord):Point {
 		var local = getLocalTilePosition(c);
 		return new Point(owner.get(Sprite).x._ + local.x, owner.get(Sprite).y._ + local.y);
@@ -104,24 +112,28 @@ class Board extends Component {
 	}
 	public function left() {
 		if (anyBlockMoving()) return;
+		++GameScene.moves;
 		for (b in blocks) {
 			b.move = MoveDirection.LEFT;
 		}
 	}
 	public function right() {
 		if (anyBlockMoving()) return;
+		++GameScene.moves;
 		for (b in blocks) {
 			b.move = MoveDirection.RIGHT;
 		}
 	}
 	public function up() {
 		if (anyBlockMoving()) return;
+		++GameScene.moves;
 		for (b in blocks) {
 			b.move = MoveDirection.UP;
 		}
 	}
 	public function down() {
 		if (anyBlockMoving()) return;
+		++GameScene.moves;
 		for (b in blocks) {
 			b.move = MoveDirection.DOWN;
 		}

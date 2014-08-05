@@ -19,6 +19,8 @@ class GameScene{
 	public static var sceneRoot(default, null):Entity;
 	public static var board:Board;
 	public static var level:Int;
+	public static var moves:Int;
+	public static var minMoves:Int;
 
 	private static var mouseDownPos:Point;
 
@@ -38,6 +40,8 @@ class GameScene{
 		System.keyboard.down.connect(keyDown);
 		System.pointer.down.connect(mouseDown);
 		System.pointer.up.connect(mouseUp);
+		moves = 0;
+		minMoves = 10;
 		return sceneRoot;
 	}
 	private static function onPause() {

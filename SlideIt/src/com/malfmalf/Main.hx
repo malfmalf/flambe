@@ -1,9 +1,6 @@
 package com.malfmalf;
 
-import com.malfmalf.scenes.LevelsScene;
-import com.malfmalf.scenes.PauseScene;
-import com.malfmalf.scenes.StartScene;
-import com.malfmalf.scenes.GameScene;
+import com.malfmalf.scenes.*;
 import flambe.animation.Ease;
 import flambe.display.Sprite;
 import flambe.display.SubTexture;
@@ -90,7 +87,7 @@ class Main
 		var ent = GameScene.createScene(level);
 		//var transition = new SlideTransition(1, Ease.quintInOut).right(); 
 		var transition = new FadeTransition(1, Ease.quintInOut); 
-		director.unwindToScene(ent, transition); 	
+		director.pushScene(ent, transition); 	
 		return ent;		
 	}
 	public static function goLevelsScene() : Entity {
@@ -104,6 +101,13 @@ class Main
 		var ent = PauseScene.createScene();
 		//var transition = new SlideTransition(1, Ease.quintInOut).right(); 
 		var transition = new FadeTransition(1, Ease.quintInOut); 
+		director.pushScene(ent, transition); 	
+		return ent;		
+	}
+	public static function goFinishScene(win:Bool) : Entity {
+		var ent = FinishScene.createScene(win);
+		//var transition = new SlideTransition(1, Ease.quintInOut).right(); 
+		var transition = new SlideTransition(1, Ease.bounceInOut).up(); 
 		director.pushScene(ent, transition); 	
 		return ent;		
 	}

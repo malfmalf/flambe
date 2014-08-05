@@ -24,7 +24,7 @@ class StartScene{
 		var start_entity = new Entity();
 		startButton = new TextButton(Main.buttons[9],new Font(Main.boardPack, "fonts/timotheos"),"Start");
 		start_entity.add(startButton);
-		start_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5);
+		start_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5).setScale(3.0);
 		sceneRoot.addChild(start_entity);
 		startButton.connectClicked(onStartButton);
 		

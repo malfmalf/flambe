@@ -1,51 +1,54 @@
 package com.malfmalf.scenes;
 import com.malfmalf.Button;
-import com.malfmalf.TextButton;
 import flambe.display.FillSprite;
-import flambe.display.Sprite;
 import flambe.display.Font;
+import flambe.display.Sprite;
+import flambe.display.TextSprite;
 import flambe.Entity;
-import flambe.System;
 import flambe.scene.Scene;
-import flambe.scene.FadeTransition;
-import flambe.animation.Ease;
 
 /**
  * ...
  * @author ...
  */
-class PauseScene{
+class FinishScene{
 	public static var sceneRoot(default, null):Entity;
-
-	public static function createScene():Entity {
+	public static function createScene(win:Bool):Entity {
 		//if (sceneRoot != null) sceneRoot.dispose();
 		sceneRoot = new Entity();
 		sceneRoot.add(new Scene(false));
 		sceneRoot.addChild(new Entity().add(new FillSprite(0x808020,Constants.gameWidth, Constants.gameHeight ).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5).setAlpha(0.5)));
-		var resume_entity = new Entity();
 		var restart_entity = new Entity();
 		var levels_entity = new Entity();
-		var resume_button = new Button(Main.buttons[9]);
 		var restart_button = new Button(Main.buttons[13]);
 		var levels_button = new Button(Main.buttons[12]);
-		resume_entity.add(resume_button);
 		restart_entity.add(restart_button);
 		levels_entity.add(levels_button);
-		sceneRoot.addChild(resume_entity);
 		sceneRoot.addChild(restart_entity);
 		sceneRoot.addChild(levels_entity);
-		resume_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.3, Constants.gameHeight * 0.5).setScale(2.0);
 		restart_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5).setScale(2.0);
 		levels_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.7, Constants.gameHeight * 0.5).setScale(2.0);
-		resume_button.connectClicked(onResumeButton);
 		restart_button.connectClicked(onRestartButton);
 		levels_button.connectClicked(onLevelsButton);
-		
+		var font = new Font(Main.boardPack, "fonts/timotheos");
+		if(win){
+			var next_entity = new Entity();
+			var next_button = new Button(Main.buttons[11]);
+			next_entity.add(next_button);
+			sceneRoot.addChild(next_entity);
+			next_button.connectClicked(onNextButton);
+			next_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.3, Constants.gameHeight * 0.5).setScale(2.0);
+			sceneRoot.addChild(new Entity().add(new TextSprite(font, "Moves : " + GameScene.moves).centerAnchor().setXY(Constants.gameWidth * 0.5, 100)));
+			sceneRoot.addChild(new Entity().add(new TextSprite(font, "Min Moves : " + GameScene.minMoves).centerAnchor().setXY(Constants.gameWidth * 0.5, 150)));
+		}
+		else {
+			sceneRoot.addChild(new Entity().add(new TextSprite(font, "FAILED!!").centerAnchor().setXY(Constants.gameWidth * 0.5, 100)));
+		}
 		return sceneRoot;
 	}
 	
-	public static function onResumeButton() {
-		Main.director.popScene(new FadeTransition(1, Ease.quintInOut));
+	public static function onNextButton() {
+		Main.goGameScene(GameScene.level+1);
 	}
 	public static function onRestartButton() {
 		Main.goGameScene(GameScene.level);

@@ -43,4 +43,8 @@ class ColorBlock extends Block
 		owner.get(ImageSprite).rotation.animateBy(720, 1.0);
 		dissapearing = true;
 	}
+	override public function onFall() {
+		super.onFall();
+		Main.goFinishScene(false);
+	}
 }
