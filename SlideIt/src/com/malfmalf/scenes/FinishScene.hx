@@ -20,8 +20,8 @@ class FinishScene{
 		sceneRoot.addChild(new Entity().add(new FillSprite(0x808020,Constants.gameWidth, Constants.gameHeight ).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5).setAlpha(0.5)));
 		var restart_entity = new Entity();
 		var levels_entity = new Entity();
-		var restart_button = new Button(Main.buttons[13]);
-		var levels_button = new Button(Main.buttons[12]);
+		var restart_button = new Button(Main.buttons.getCut("but_restart"));
+		var levels_button = new Button(Main.buttons.getCut("but_levels"));
 		restart_entity.add(restart_button);
 		levels_entity.add(levels_button);
 		sceneRoot.addChild(restart_entity);
@@ -33,7 +33,7 @@ class FinishScene{
 		var font = new Font(Main.boardPack, "fonts/timotheos");
 		if(win){
 			var next_entity = new Entity();
-			var next_button = new Button(Main.buttons[11]);
+			var next_button = new Button(Main.buttons.getCut("but_next"));
 			next_entity.add(next_button);
 			sceneRoot.addChild(next_entity);
 			next_button.connectClicked(onNextButton);

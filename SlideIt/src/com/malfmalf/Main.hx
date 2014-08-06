@@ -22,7 +22,7 @@ class Main
 	public static var directorEntity:Entity;
 	public static var boardPack:AssetPack;
 	public static var director:Director;
-	public static var buttons:Array<SubTexture>;
+	public static var buttons:CutFile;
 	
     private static function main (){
         // Wind up all platform-specific stuff
@@ -34,7 +34,7 @@ class Main
 
     private static function onSuccess (pack :AssetPack) {
 		boardPack = pack;
-		buttons = boardPack.getTexture("img/buttons_sheet").split(7, 2);
+		buttons = new CutFile(boardPack, "img/buttons.cut");
         // Add a solid color background
         var background = new FillSprite(0x80ff80, System.stage.width, System.stage.height);
         System.root.addChild(new Entity().add(background));

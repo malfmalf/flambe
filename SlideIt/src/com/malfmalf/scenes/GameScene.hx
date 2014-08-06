@@ -32,7 +32,7 @@ class GameScene{
 		sceneRoot.addChild(new Entity().add(new FillSprite(0x808080,Constants.gameWidth, Constants.gameHeight ).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5)));
 		createBoard();
 		var but_ent = new Entity();
-		var but = new Button(Main.buttons[8]);
+		var but = new Button(Main.buttons.getCut("but_pause"));
 		but_ent.add(but);
 		sceneRoot.addChild(but_ent);
 		but_ent.get(Sprite).setXY(Constants.gameWidth - 64, 0);

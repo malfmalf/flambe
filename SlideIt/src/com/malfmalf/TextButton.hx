@@ -4,6 +4,7 @@ import flambe.display.Font;
 import flambe.display.Texture;
 import flambe.Entity;
 import flambe.display.TextSprite;
+using com.malfmalf.SpriteUtils;
 /**
  * ...
  * @author ...
@@ -18,9 +19,10 @@ class TextButton extends Button{
 	}
 	public override function onAdded() {
 		super.onAdded();
+		var t = new TextSprite(font, text).centerAnchor().setXY(32, 32);
 		owner.addChild(new Entity()
-			.add(new TextSprite(font, text).centerAnchor().setXY(32,32)));
-
+			.add(t));
+		t.centerOnParent();
 	}
 	
 }

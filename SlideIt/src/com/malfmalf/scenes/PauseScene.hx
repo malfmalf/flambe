@@ -25,9 +25,9 @@ class PauseScene{
 		var resume_entity = new Entity();
 		var restart_entity = new Entity();
 		var levels_entity = new Entity();
-		var resume_button = new Button(Main.buttons[9]);
-		var restart_button = new Button(Main.buttons[13]);
-		var levels_button = new Button(Main.buttons[12]);
+		var resume_button = new Button(Main.buttons.getCut("but_resume"));
+		var restart_button = new Button(Main.buttons.getCut("but_restart"));
+		var levels_button = new Button(Main.buttons.getCut("but_levels"));
 		resume_entity.add(resume_button);
 		restart_entity.add(restart_button);
 		levels_entity.add(levels_button);

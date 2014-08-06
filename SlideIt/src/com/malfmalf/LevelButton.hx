@@ -28,7 +28,7 @@ class LevelButton extends TextButton{
 		levelSelect.emit(level);
 	}
 	private static function loadAssets() {
-		texture = Main.buttons[7];
+		texture = Main.buttons.getCut("but_empty");
 		levelFont = new Font(Main.boardPack, "fonts/comic");
 	}
 	
