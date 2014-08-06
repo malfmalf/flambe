@@ -1,0 +1,111 @@
+[
+ {
+  "cuts" :   {
+   "back" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 104,
+    "w" : 95,
+    "x" : 655,
+    "y" : 0
+   },
+   "but_back" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 161,
+    "w" : 161,
+    "x" : 622,
+    "y" : 149
+   },
+   "but_empty" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 161,
+    "w" : 161,
+    "x" : 0,
+    "y" : 149
+   },
+   "but_levels" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 161,
+    "w" : 161,
+    "x" : 1037,
+    "y" : 149
+   },
+   "but_next" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 161,
+    "w" : 161,
+    "x" : 829,
+    "y" : 149
+   },
+   "but_pause" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 161,
+    "w" : 161,
+    "x" : 207,
+    "y" : 149
+   },
+   "but_play" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 161,
+    "w" : 162,
+    "x" : 414,
+    "y" : 149
+   },
+   "but_restart" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 161,
+    "w" : 161,
+    "x" : 1246,
+    "y" : 149
+   },
+   "levels" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 100,
+    "w" : 100,
+    "x" : 1065,
+    "y" : 4
+   },
+   "next" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 86,
+    "w" : 108,
+    "x" : 856,
+    "y" : 9
+   },
+   "pause" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 90,
+    "w" : 75,
+    "x" : 250,
+    "y" : 2
+   },
+   "play" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 86,
+    "w" : 76,
+    "x" : 457,
+    "y" : 9
+   },
+   "restart" :    {
+    "center_x" : 0.5,
+    "center_y" : 0.5,
+    "h" : 100,
+    "w" : 120,
+    "x" : 1267,
+    "y" : 2
+   }
+  },
+  "filename" : "buttons.png"
+ }
+]
