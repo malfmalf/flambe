@@ -15,3 +15,16 @@ crop_alpha,buttons_2_4,0
 crop_alpha,buttons_2_5,0
 crop_alpha,buttons_2_6,0
 crop_alpha,buttons_2_7,0
+rename,buttons_1_1,pause
+rename,buttons_1_2,play
+rename,buttons_1_3,back
+rename,buttons_1_4,next
+rename,buttons_1_5,levels
+rename,buttons_1_6,restart
+rename,buttons_2_1,but_empty
+rename,buttons_2_2,but_pause
+rename,buttons_2_3,but_play
+rename,buttons_2_4,but_back
+rename,buttons_2_5,but_next
+rename,buttons_2_6,but_levels
+rename,buttons_2_7,but_restart
