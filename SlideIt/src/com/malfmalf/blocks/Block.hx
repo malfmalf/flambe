@@ -30,7 +30,8 @@ class Block extends Component{
 	public var pos(default, null):Point;
 	public var move:MoveDirection;
 	private var disposer:Disposer;
-	private var script:Script;
+	private var willFall:Bool;
+	private var falling:Bool;
 	public function new(c:BoardCoord, p:Point) {
 		coord = c;
 		next_coord = c;
@@ -38,14 +39,25 @@ class Block extends Component{
 		pos = p;		
 		move = MoveDirection.NONE;
 		disposer = new Disposer();
+		willFall = false;
+		falling = false;
 		
 	}
 	override public function onAdded() {
-		script = new Script();
-		owner.add(script);		
 		super.onAdded();
 	}
 	override public function onUpdate(dt:Float) {
+		if (falling) {
+			var spr = owner.get(Sprite);
+			var doing = (spr.scaleX.behavior != null && !spr.scaleX.behavior.isComplete()) || (spr.scaleY.behavior != null && !spr.scaleY.behavior.isComplete());
+			if (!doing) {
+				GameScene.board.blocks.remove(this);
+				owner.disposeChildren();
+				owner.dispose();
+				onFall();
+			}
+			return;			
+		}
 		if (move == NONE) {
 			return;
 		}
@@ -74,10 +86,7 @@ class Block extends Component{
 		spr.setXY(p.x, p.y);
 	}
 	public function onFall() {
-		move = NONE;
-		var spr = owner.get(Sprite);
-		spr.scaleX.animateTo(0.1, 0.5);
-		spr.scaleY.animateTo(0.1, 0.5);
+	
 	}
 	public function manhattan(other:Block):Float {
 		var spr  = owner.get(Sprite);
@@ -125,6 +134,18 @@ class Block extends Component{
 	}
 	public function checkTileMovement(d:Float) {
 		if (reached(next_coord)) {
+			if (willFall) {
+				trace("FALL at " + next_coord);
+				coord = next_coord;
+				falling = true;
+				stop();
+				var spr = owner.get(Sprite);
+				spr.scaleX.animateTo(0.01, 1.0);
+				spr.scaleY.animateTo(0.01, 1.0);
+				spr.rotation.animateBy(180.0, 1.0);
+				spr.alpha.animateTo(0.2, 1.0);
+				return;
+			}
 			var next_tile = GameScene.board.getTile(next_coord);
 			if (next_tile != null) {
 				trace("END : " + next_tile);
@@ -147,6 +168,10 @@ class Block extends Component{
 			if (next_tile != null) {
 				trace("ENTER : " + next_tile);
 				next_tile.onEnterStart(this);		
+			}
+			else {
+				trace("WILL FALL at " + next_coord);
+				willFall = true;
 			}
 			next_coord_reached = false;
 		}

@@ -30,7 +30,7 @@ class LevelsScene{
 				var lev_but = new LevelButton(level);
 				levels_entity.addChild(new Entity().add(lev_but));
 				lev_but.connectLevelSelect(onLevelSelected);
-				lev_but.owner.get(Sprite).setXY((i - 2.5) * 100, (j - 2.5) * 100).setScale(1.2);
+				lev_but.owner.get(Sprite).setXY((i - 2.5) * 100, (j - 2.5) * 100);
 			}
 		}
 		

@@ -100,7 +100,7 @@ class Main
 	public static function goPauseScene() : Entity {
 		var ent = PauseScene.createScene();
 		//var transition = new SlideTransition(1, Ease.quintInOut).right(); 
-		var transition = new FadeTransition(1, Ease.quintInOut); 
+		var transition = new SlideTransition(0.5, Ease.bounceOut).down(); 
 		director.pushScene(ent, transition); 	
 		return ent;		
 	}

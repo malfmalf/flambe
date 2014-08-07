@@ -36,6 +36,9 @@ class Board extends Component {
 		if (t == "_") {
 			tile = new EmptyTile(c, getLocalTilePosition(c));
 		}
+		else if (t == "0") {
+			tile = null;
+		}
 		else if (t == "X") {
 			tile = new StopTile(c, getLocalTilePosition(c));
 		}
@@ -54,8 +57,10 @@ class Board extends Component {
 		else  {
 			tile = new ColorTile(Std.parseInt(t),c, getLocalTilePosition(c));
 		}
-		e.add(tile);
-		tileRoot.addChild(e);
+		if(tile!=null){
+			e.add(tile);
+			tileRoot.addChild(e);
+		}
 		tiles.push(tile);
 	}
 	private function addBlock(c:BoardCoord, t:String) {
@@ -92,9 +97,10 @@ class Board extends Component {
 			for (i in 0...width) {
 				var c = new BoardCoord(i, j);
 				addTile(c, lines[j + 1].charAt(i));
-				addBlock(c, lines[j + 9].charAt(i));
+				addBlock(c, lines[j + height + 1].charAt(i));
 			}
 		}
+		GameScene.minMoves = Std.parseInt(lines[height * 2 + 1]);
 	}
 	
 	override public function onUpdate(dt:Float) {

@@ -26,8 +26,8 @@ class FinishScene{
 		levels_entity.add(levels_button);
 		sceneRoot.addChild(restart_entity);
 		sceneRoot.addChild(levels_entity);
-		restart_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5).setScale(2.0);
-		levels_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.7, Constants.gameHeight * 0.5).setScale(2.0);
+		restart_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.33, Constants.gameHeight * 0.5);
+		levels_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.66, Constants.gameHeight * 0.5) ;
 		restart_button.connectClicked(onRestartButton);
 		levels_button.connectClicked(onLevelsButton);
 		var font = new Font(Main.boardPack, "fonts/timotheos");
@@ -37,7 +37,9 @@ class FinishScene{
 			next_entity.add(next_button);
 			sceneRoot.addChild(next_entity);
 			next_button.connectClicked(onNextButton);
-			next_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.3, Constants.gameHeight * 0.5).setScale(2.0);
+			next_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.25, Constants.gameHeight * 0.5);
+			restart_entity.get(Sprite).setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5);
+			levels_entity.get(Sprite).setXY(Constants.gameWidth * 0.75, Constants.gameHeight * 0.5);
 			sceneRoot.addChild(new Entity().add(new TextSprite(font, "Moves : " + GameScene.moves).centerAnchor().setXY(Constants.gameWidth * 0.5, 100)));
 			sceneRoot.addChild(new Entity().add(new TextSprite(font, "Min Moves : " + GameScene.minMoves).centerAnchor().setXY(Constants.gameWidth * 0.5, 150)));
 		}

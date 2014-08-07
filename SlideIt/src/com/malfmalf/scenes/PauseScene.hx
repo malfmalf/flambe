@@ -5,6 +5,7 @@ import flambe.display.FillSprite;
 import flambe.display.Sprite;
 import flambe.display.Font;
 import flambe.Entity;
+import flambe.scene.SlideTransition;
 import flambe.System;
 import flambe.scene.Scene;
 import flambe.scene.FadeTransition;
@@ -25,7 +26,7 @@ class PauseScene{
 		var resume_entity = new Entity();
 		var restart_entity = new Entity();
 		var levels_entity = new Entity();
-		var resume_button = new Button(Main.buttons.getCut("but_resume"));
+		var resume_button = new Button(Main.buttons.getCut("but_play"));
 		var restart_button = new Button(Main.buttons.getCut("but_restart"));
 		var levels_button = new Button(Main.buttons.getCut("but_levels"));
 		resume_entity.add(resume_button);
@@ -34,9 +35,9 @@ class PauseScene{
 		sceneRoot.addChild(resume_entity);
 		sceneRoot.addChild(restart_entity);
 		sceneRoot.addChild(levels_entity);
-		resume_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.3, Constants.gameHeight * 0.5).setScale(2.0);
-		restart_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5).setScale(2.0);
-		levels_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.7, Constants.gameHeight * 0.5).setScale(2.0);
+		resume_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.25, Constants.gameHeight * 0.5);
+		restart_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.5, Constants.gameHeight * 0.5);
+		levels_entity.get(Sprite).centerAnchor().setXY(Constants.gameWidth * 0.75, Constants.gameHeight * 0.5);
 		resume_button.connectClicked(onResumeButton);
 		restart_button.connectClicked(onRestartButton);
 		levels_button.connectClicked(onLevelsButton);
@@ -45,7 +46,7 @@ class PauseScene{
 	}
 	
 	public static function onResumeButton() {
-		Main.director.popScene(new FadeTransition(1, Ease.quintInOut));
+		Main.director.popScene(new SlideTransition(1, Ease.bounceIn).up());
 	}
 	public static function onRestartButton() {
 		Main.goGameScene(GameScene.level);
