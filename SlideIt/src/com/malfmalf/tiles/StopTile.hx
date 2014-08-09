@@ -9,11 +9,11 @@ import com.malfmalf.blocks.Block.MoveDirection;
  */
 class StopTile extends Tile{
 
-	public function new(c:BoardCoord, p:Point) {
-		super(c, p);
+	public function new(c:BoardCoord, p:Point,textureId:Int) {
+		super(c, p,textureId);
 	}
 	override public function onAdded () {
-		owner.add(new ImageSprite(Main.boardPack.getTexture("img/tiles/stop")).centerAnchor());
+		owner.add(new ImageSprite(Main.elements.getCut("tileStop")).centerAnchor());
 		owner.get(ImageSprite).setXY(pos.x, pos.y);
 	}
 	override public function onEnterStart(block:Block) {

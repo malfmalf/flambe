@@ -48,7 +48,7 @@ class GameScene{
 	}
 	private static function createBoard() {
 		var boardRoot = new Entity();
-		board = new Board(Main.boardPack.getFile("levels/"+level+".txt").toString());
+		board = new Board(Main.boardPack.getFile("levels/level"+level+".tmx").toString());
 		boardRoot.add(board);
 		sceneRoot.addChild(boardRoot);
 	}

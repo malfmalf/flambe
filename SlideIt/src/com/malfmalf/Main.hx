@@ -23,6 +23,7 @@ class Main
 	public static var boardPack:AssetPack;
 	public static var director:Director;
 	public static var buttons:CutFile;
+	public static var elements:CutFile;
 	
     private static function main (){
         // Wind up all platform-specific stuff
@@ -35,6 +36,7 @@ class Main
     private static function onSuccess (pack :AssetPack) {
 		boardPack = pack;
 		buttons = new CutFile(boardPack, "img/buttons.cut");
+		elements = new CutFile(boardPack, "img/tiles_blocks.cut");
         // Add a solid color background
         var background = new FillSprite(0x80ff80, System.stage.width, System.stage.height);
         System.root.addChild(new Entity().add(background));

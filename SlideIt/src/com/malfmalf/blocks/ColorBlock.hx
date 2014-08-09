@@ -13,13 +13,13 @@ class ColorBlock extends Block
 {
 	public var color(default, null):Int;
 	private var dissapearing:Bool;
-	public function new(color:Int, c:BoardCoord, p:Point) {
-		super(c, p);
+	public function new(color:Int, c:BoardCoord, p:Point,textureId:Int) {
+		super(c, p,textureId);
 		this.color = color;
 		dissapearing = false;
 	}
 	override public function onAdded () {
-		owner.add(new ImageSprite(Main.boardPack.getTexture("img/blocks/"+color)).centerAnchor());
+		owner.add(new ImageSprite(Main.elements.getCut("block"+color)).centerAnchor());
 		owner.get(ImageSprite).setXY(pos.x, pos.y);
 		super.onAdded();
     }

@@ -28,15 +28,17 @@ class Block extends Component{
 	public var next_coord(default, null):BoardCoord;
 	private var next_coord_reached:Bool;
 	public var pos(default, null):Point;
+	private var textureId:Int;
 	public var move:MoveDirection;
 	private var disposer:Disposer;
 	private var willFall:Bool;
 	private var falling:Bool;
-	public function new(c:BoardCoord, p:Point) {
+	public function new(c:BoardCoord, p:Point,textureId:Int) {
 		coord = c;
 		next_coord = c;
 		next_coord_reached = false;
 		pos = p;		
+		this.textureId = textureId;
 		move = MoveDirection.NONE;
 		disposer = new Disposer();
 		willFall = false;

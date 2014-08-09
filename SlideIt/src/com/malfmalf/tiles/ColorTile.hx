@@ -12,13 +12,13 @@ import com.malfmalf.blocks.Block;
  */
 class ColorTile extends Tile{
 	public var color(default, null):Int;
-	public function new(color:Int,c:BoardCoord, p:Point) {
-		super(c, p);
+	public function new(color:Int,c:BoardCoord, p:Point,textureId:Int) {
+		super(c, p,textureId);
 		this.color = color;
 		
 	}
 	override public function onAdded () {
-		owner.add(new ImageSprite(Main.boardPack.getTexture("img/tiles/"+color)).centerAnchor());
+		owner.add(new ImageSprite(Main.elements.getCut("tile"+color)).centerAnchor());
 		owner.get(ImageSprite).setXY(pos.x, pos.y);
     }
 	override public function onEnterEnd(block:Block) {

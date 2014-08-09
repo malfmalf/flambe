@@ -20,20 +20,20 @@ import com.malfmalf.Animation;
 class DirectionTile extends Tile
 {
 	public var direction(default, null):MoveDirection;
-	public function new(d:MoveDirection,c:BoardCoord, p:Point) {
-		super(c, p);
+	public function new(d:MoveDirection,c:BoardCoord, p:Point,textureId:Int) {
+		super(c, p,textureId);
 		direction = d;
 	}
 	override public function onAdded () {
 		var name:String;
 		switch(direction) {
-			case MoveDirection.LEFT : name = "leftFrames";
-			case MoveDirection.RIGHT: name = "rightFrames";
-			case MoveDirection.UP   : name = "upFrames";
-			case MoveDirection.DOWN : name = "downFrames";
+			case MoveDirection.LEFT : name = "Left";
+			case MoveDirection.RIGHT: name = "Right";
+			case MoveDirection.UP   : name = "Up";
+			case MoveDirection.DOWN : name = "Down";
 			default:trace("UH?"); name = "error";
 		}
-		var manager = new AnimationManager(new AnimationSheet(Main.boardPack.getTexture("img/tiles/" + name), 64, 64));
+		var manager = new AnimationManager(new AnimationSheet(Main.elements.getCut("tile" + name), 128, 128));
 		var animation = Animation.allFramesAnimation(manager.animationSheet, 8.0, true, true);
 		manager.addAnimation("main", animation);
 		manager.setCurrentAnimation("main");
