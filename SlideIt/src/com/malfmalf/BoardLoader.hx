@@ -54,10 +54,12 @@ class BoardLoader implements TiledLoader{
 		}
 		switch(gid) {
 			case 0,1: //nada
-			case 2:
+			case 2,17,18,19,20,21,22:
 				addTile(count, new EmptyTile(coord, board.getLocalTilePosition(coord),gid));
 			case 3:
 				addTile(count, new StopTile(coord, board.getLocalTilePosition(coord),gid));
+			case 4:
+				addTile(count, new BrakeTile(coord, board.getLocalTilePosition(coord),gid));
 			case 5:
 				addTile(count, new DirectionTile(MoveDirection.LEFT,coord, board.getLocalTilePosition(coord),gid));
 			case 6:
@@ -72,7 +74,20 @@ class BoardLoader implements TiledLoader{
 				addBlock(count , new ColorBlock(gid - 12, coord, board.getLocalTilePosition(coord), gid));
 			case 16:
 				addBlock(count , new MovingBlock(coord, board.getLocalTilePosition(coord), gid));
-			case 4,12:
+			case 25:
+				addTile(count , new SwitchTile(1,true,coord, board.getLocalTilePosition(coord), gid));
+			case 26:
+				addTile(count , new SwitchTile(1,false,coord, board.getLocalTilePosition(coord), gid-1));
+			case 27:
+				addTile(count , new SwitchableTile(1,coord, board.getLocalTilePosition(coord), gid));
+			case 29:
+				addTile(count , new SwitchTile(2,true,coord, board.getLocalTilePosition(coord), gid));
+			case 30:
+				addTile(count , new SwitchTile(2,false,coord, board.getLocalTilePosition(coord), gid-1));
+			case 31:
+				addTile(count , new SwitchableTile(2,coord, board.getLocalTilePosition(coord), gid));
+				
+			case 12,23,24,32:
 				trace("WARNING : Unsupported gid at " + layerName+"(" + count + ")=" + gid);
 			default:
 				trace("WARNING : Unsupported gid at " + layerName+"(" + count + ")=" + gid);

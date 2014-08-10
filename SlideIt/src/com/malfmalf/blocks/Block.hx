@@ -4,6 +4,7 @@ import com.malfmalf.tiles.Tile;
 import flambe.animation.Ease;
 import flambe.Component;
 import flambe.display.Sprite;
+import flambe.display.ImageSprite;
 import flambe.Disposer;
 import flambe.math.Point;
 import com.malfmalf.scenes.GameScene;
@@ -46,7 +47,8 @@ class Block extends Component{
 		
 	}
 	override public function onAdded() {
-		super.onAdded();
+		owner.add(new ImageSprite(Main.elements.getCut(Std.string(textureId))).centerAnchor());
+		owner.get(ImageSprite).setXY(pos.x, pos.y);		
 	}
 	override public function onUpdate(dt:Float) {
 		if (falling) {
@@ -136,9 +138,9 @@ class Block extends Component{
 	}
 	public function checkTileMovement(d:Float) {
 		if (reached(next_coord)) {
+			coord = next_coord;
 			if (willFall) {
 				trace("FALL at " + next_coord);
-				coord = next_coord;
 				falling = true;
 				stop();
 				var spr = owner.get(Sprite);
@@ -148,12 +150,11 @@ class Block extends Component{
 				spr.alpha.animateTo(0.2, 1.0);
 				return;
 			}
-			var next_tile = GameScene.board.getTile(next_coord);
-			if (next_tile != null) {
-				trace("END : " + next_tile);
-				next_tile.onEnterEnd(this);			
+			var tile = GameScene.board.getTile(coord);
+			if (tile != null) {
+				trace("END : " + tile);
+				tile.onEnterEnd(this);			
 			}
-			coord = next_coord;
 			var p = GameScene.board.getLocalTilePosition(coord);
 			var spr  = owner.get(Sprite);
 			switch(move) {
@@ -161,6 +162,7 @@ class Block extends Component{
 				case RIGHT: next_coord = coord.right();spr.y._ = p.y;
 				case UP   : next_coord = coord.up();   spr.x._ = p.x;
 				case DOWN : next_coord = coord.down(); spr.x._ = p.x;
+				case NONE : //na
 				default : trace("UUUH!");
 			}		
 			next_coord_reached = true;

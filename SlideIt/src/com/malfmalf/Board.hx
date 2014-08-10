@@ -23,6 +23,8 @@ class Board extends Component {
 	public var definition(default, null):String;
 	public var tiles(default, null):Array<Tile>;
 	public var blocks(default, null):Array<Block>;
+	public var blocksRoot:Entity;//estas dos hacen falta para que los blocks siempre vayan por delante de los tiles
+	public var tilesRoot:Entity;
 	public function new(def:String) {
 		definition = def;
 		tiles = new Array<Tile>();
@@ -37,6 +39,10 @@ class Board extends Component {
 
 	override public function onAdded() {
 		owner.add(new Sprite().setXY(Constants.gameWidth / 2, Constants.gameHeight / 2));
+		blocksRoot = new Entity();
+		tilesRoot = new Entity();
+		owner.addChild(tilesRoot);
+		owner.addChild(blocksRoot);
 		var xml = Xml.parse(definition);
 		Tiled.load(xml, new BoardLoader(this));
 	}

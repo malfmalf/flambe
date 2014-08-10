@@ -18,11 +18,6 @@ class ColorBlock extends Block
 		this.color = color;
 		dissapearing = false;
 	}
-	override public function onAdded () {
-		owner.add(new ImageSprite(Main.elements.getCut("block"+color)).centerAnchor());
-		owner.get(ImageSprite).setXY(pos.x, pos.y);
-		super.onAdded();
-    }
 	override public function onUpdate(dt:Float) {
 		if (dissapearing) {
 			var spr = owner.get(ImageSprite);

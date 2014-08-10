@@ -17,10 +17,6 @@ class ColorTile extends Tile{
 		this.color = color;
 		
 	}
-	override public function onAdded () {
-		owner.add(new ImageSprite(Main.elements.getCut("tile"+color)).centerAnchor());
-		owner.get(ImageSprite).setXY(pos.x, pos.y);
-    }
 	override public function onEnterEnd(block:Block) {
 			if (Std.is(block, ColorBlock)) {
 				var color_block = cast(block, ColorBlock);

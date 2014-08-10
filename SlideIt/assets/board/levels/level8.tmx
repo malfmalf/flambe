@@ -4,7 +4,7 @@
   <property name="minMoves" value="100"/>
  </properties>
  <tileset firstgid="1" name="blocks&amp;tiles" tilewidth="128" tileheight="128">
-  <image source="tiles_blocks.png" width="512" height="513"/>
+  <image source="..\img\tiles_blocks.png" width="512" height="1024"/>
  </tileset>
  <layer name="tiles" width="10" height="10">
   <data>

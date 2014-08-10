@@ -2,6 +2,7 @@ package com.malfmalf.tiles ;
 import flambe.Component;
 import flambe.math.Point;
 import com.malfmalf.blocks.Block;
+import flambe.display.ImageSprite;
 /**
  * ...
  * @author ...
@@ -16,7 +17,8 @@ class Tile extends Component{
 		this.textureId = textureId;
 	}
 	override public function onAdded() {
-		trace("Non specific BoardTile added....");
+		owner.add(new ImageSprite(Main.elements.getCut(Std.string(textureId))).centerAnchor());
+		owner.get(ImageSprite).setXY(pos.x, pos.y);		
 	}
 	public function onEnterStart(block:Block) {
 	}
